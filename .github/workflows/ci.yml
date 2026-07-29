@@ -88,6 +88,9 @@ jobs:
           fi
 
           echo "Smoke test superato"
-          
-      # TODO 5 - Carica dist/ come artefatto con nome "sito", cosi' che il
-      #          workflow di release possa scaricarlo invece di ricostruirlo.
+
+      - name: Carica l'artefatto del sito
+        uses: actions/upload-artifact@v4
+        with:
+          name: sito
+          path: dist/
