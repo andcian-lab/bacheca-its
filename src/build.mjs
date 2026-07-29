@@ -64,7 +64,7 @@ function main() {
   // sta ripubblicando, non quella dell'ultimo commit su main). In locale: "locale".
   const versione = process.env.VERSIONE || process.env.GITHUB_SHA?.slice(0, 7) || "locale";
   mkdirSync(OUT, { recursive: true });
-  writeFileSync(`${OUT}/index.html`, render(dati, versione));
+  writeFileSync(`${OUT}/index.html`, render({ ...dati, avvisi: dati.avvisi.slice(0, -1) }, versione));
   writeFileSync(
     `${OUT}/versione.json`,
     JSON.stringify(
